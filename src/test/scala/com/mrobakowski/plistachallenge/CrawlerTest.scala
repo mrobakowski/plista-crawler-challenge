@@ -37,7 +37,8 @@ class CrawlerTest extends CrawlerSpec with StrictLogging {
     pages(url).title should equal("Scala (programming language) - Wikipedia")
   }
 
-  "Crawler" should "crawl all the pages recursively" in {
+  // in the real world network IO should be abstracted away and mocked, since this test takes a looooong time
+  "Crawler" should "crawl all the pages recursively" ignore {
     val pages = mutable.Map[URL, Page]()
 
     val c = new Crawler(new PageIndex {
@@ -52,7 +53,7 @@ class CrawlerTest extends CrawlerSpec with StrictLogging {
       override def size(): Long = ???
     })
 
-    val url = new URL("https://stallman.org/")
+    val url = new URL("https://www.plista.com/")
 
     c.queueCrawl(url)
     c.waitUntilFinishedCrawling()
