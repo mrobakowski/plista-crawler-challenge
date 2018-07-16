@@ -53,10 +53,11 @@ class CrawlerTest extends CrawlerSpec with StrictLogging {
       override def size(): Long = ???
     })
 
-    val url = new URL("https://www.plista.com/")
+    val url = new URL("https://www.plista.com/") // TODO: find a page with smaller whatchamacallit... a hyperlink-graph?
 
     c.queueCrawl(url)
     c.waitUntilFinishedCrawling()
+    // TODO: check if the crawled pages are the pages that we expect
     Unit
   }
 
